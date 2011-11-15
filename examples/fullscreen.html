@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <title>OpenLayers FullScreen Example</title>
+
+    <link rel="stylesheet" href="http://openlayers.org/dev/theme/default/style.css" type="text/css" />
+    <link rel="stylesheet" href="http://openlayers.org/dev/examples/style.css" type="text/css" />
+    <link rel="stylesheet" href="../css/fullscreen.css" type="text/css">
+
+    <script src="http://openlayers.org/dev/OpenLayers.js"></script>
+    <script src="../lib/OpenLayers/Control/FullScreen.js"></script>
+    <style>
+      .smallmap {
+          background-color: white;
+      }
+      .olControlPanel {
+          right: 0;
+          padding: 5px;
+      }
+    </style>
+    <script type="text/javascript">
+        var map;
+        function init() {
+            map = new OpenLayers.Map('map');
+
+            var panel = new OpenLayers.Control.Panel();
+            panel.addControls([new OpenLayers.Control.FullScreen()]);
+            map.addControl(panel);
+
+            map.addLayer(new OpenLayers.Layer.WMS("OpenLayers WMS", "http://vmap0.tiles.osgeo.org/wms/vmap0", {
+                layers: 'basic'
+            }));
+            map.zoomTo(2);
+        }
+    </script>
+  </head>
+  <body onload="init()">
+    <h1 id="title">FullScreen control</h1>
+
+    <p id="shortdesc"></p>
+
+    <div id="map" class="smallmap"></div>
+
+    <div id="docs"></div>
+
+  </body>
+</html>
